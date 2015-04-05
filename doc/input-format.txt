@@ -2,6 +2,7 @@
 
 ========================================
 cardinality of language letters set\n
+cardinality of states set\n
 \n
 transition table
 \n
