@@ -1,0 +1,7 @@
+input file have following format:
+
+language letters\n
+\n
+transition graph
+\n
+finish states
