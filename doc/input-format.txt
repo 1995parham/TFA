@@ -1,7 +1,9 @@
-input file have following format:
+* Input file for FA(Finite Automata) have following format:
 
+========================================
 cardinality of language letters set\n
 \n
 transition table
 \n
 final states
+========================================
