@@ -1,7 +1,7 @@
 input file have following format:
 
-language letters\n
+cardinality of language letters set\n
 \n
-transition graph
+transition table
 \n
-finish states
+final states
