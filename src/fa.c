@@ -5,7 +5,7 @@
  *
  * [] Creation Date : 05-04-2015
  *
- * [] Last Modified : Sun 05 Apr 2015 09:10:34 AM IRDT
+ * [] Last Modified : Thu 16 Apr 2015 10:26:25 PM IRDT
  *
  * [] Created By : Parham Alvani (parham.alvani@gmail.com)
  * =======================================
@@ -65,4 +65,31 @@ void fa_delete(struct fa *f)
 	free(f->ttable);
 	free(f->is_final);
 	free(f);
+}
+
+struct fa *fa_new_intersection(const struct fa *f1, const struct fa *f2)
+{
+	if (f1->sigma == f2->sigma)
+		return NULL;
+
+	struct fa *new;
+	int i, j, k;
+	int state;
+
+	new = malloc(sizeof(struct fa));
+	new->sigma = f1->sigma;
+	new->delta = f1->delta * f2->delta;
+	new->ttable = malloc(new->delta * sizeof(int));
+	for (i = 0; i < new->delta; i++)
+		new->ttable[i] = malloc(new->sigma * sizeof(int));
+	for (i = 0; i < f1->delta; i++)
+		for (j = 0; j < f2->delta; j++)
+			for (k = 0; k < new->sigma; k++)
+				new->ttable[(i + 1) * (j + 1) - 1][k] =
+					f1->ttable[i][k] * f2->ttable[j][k];
+	new->is_final = calloc(new->delta, sizeof(int));
+	for (i = 0; i < f1->delta; i++)
+		for (j = 0; j < f2->delta; j++)
+			new->is_final[(i + 1) * (j + 1) - 1] = f1->is_final[i] && f1->is_final[j];
+	return new;
 }
