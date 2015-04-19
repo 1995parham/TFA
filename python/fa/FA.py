@@ -12,6 +12,9 @@ __author__ = 'Parham Alvani'
 class FA:
     """
     simple class for handling finite automata
+
+    FA class object is immutable so you cannot change
+    them after building them.
     """
 
     def __init__(self, transition_table, final_states):
@@ -32,6 +35,8 @@ class FA:
 
     def validate(self, w):
         """
+        validate string with this FA
+
         :type w: str
         :param w: input string
         :return: boolean indicate that FA accepts w or not
@@ -49,10 +54,31 @@ class FA:
         else:
             return False
 
+    def intersection(self, f):
+        """
+        intersect FA with this FA
 
-if __name__ == "__main__":
+        :type f: FA
+        :param f: FA that you want to intersect with this FA
+        :return: FA construct from f and this FA intersection
+        """
+        if not isinstance(f, FA):
+            raise TypeError("f must be FA")
+
+
+def test():
+    """
+    Test function
+    :return: nothing
+    """
+
+    print("Testing FA class")
     fa = FA(((2, 1), (1, 2)), (2,))
     assert not fa.validate("aab")
     assert fa.validate("aaab")
     assert not fa.validate("aaaab")
     assert fa.validate("aaaaab")
+
+
+if __name__ == "__main__":
+    test()

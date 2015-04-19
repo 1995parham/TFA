@@ -8,5 +8,7 @@
 # =======================================
 __author__ = 'Parham Alvani'
 
-from FA import FA
+from fa import FA
+from fa import DAO
+from fa import FileDAO
 
