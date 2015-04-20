@@ -49,8 +49,8 @@ def test():
     Test function
     :return: nothing
     """
-    fa = (FileDAO()).build_fa("test-1.txt")
-    assert fa.validate("aabab")
+    file_fa = (FileDAO()).build_fa("test-1.txt")
+    assert file_fa.validate("aabab")
 
 
 if __name__ == "__main__":
