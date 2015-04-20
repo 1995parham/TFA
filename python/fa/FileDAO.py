@@ -14,7 +14,7 @@ from fa import DAO
 
 class FileDAO(DAO.DAO):
     def __init__(self):
-        pass
+        super().__init__()
 
     def build_fa(self, input_config):
         """
@@ -36,15 +36,12 @@ class FileDAO(DAO.DAO):
         for i in range(0, delta):
             transition_table.append([int(number) for number in file.readline().rstrip('\n').split(' ')])
         file.readline()
-        final_states = [int(number) for number in file.readline().rstrip('\n').split(' ')]
-
-        final_states = tuple(final_states)
-        transition_table = tuple(transition_table)
+        final_states = {int(number) for number in file.readline().rstrip('\n').split(' ')}
 
         file.close()
         del file
 
-        return FA.FA(transition_table, final_states)
+        return FA.FA(tuple(transition_table), final_states)
 
 
 def test():

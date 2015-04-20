@@ -20,7 +20,7 @@ class FA:
     def __init__(self, transition_table, final_states):
         """
         :type transition_table: tuple
-        :type final_states: tuple
+        :type final_states: set
         :param transition_table: FA transition table
         :param final_states: FA final states
         :return: nothing
@@ -28,8 +28,8 @@ class FA:
 
         if not isinstance(transition_table, tuple):
             raise TypeError("transition_table must be tuple")
-        if not isinstance(final_states, tuple):
-            raise TypeError("final_states must be tuple")
+        if not isinstance(final_states, set):
+            raise TypeError("final_states must be set")
         self.transition_table = transition_table
         self.final_states = final_states
 
@@ -49,7 +49,7 @@ class FA:
         while w_index < len(w):
             current_state = self.transition_table[current_state - 1][ord(w[w_index]) - ord('a')]
             w_index += 1
-        if self.final_states.count(current_state) > 0:
+        if current_state in self.final_states:
             return True
         else:
             return False
@@ -73,7 +73,7 @@ def test():
     """
 
     print("Testing FA class")
-    fa = FA(((2, 1), (1, 2)), (2,))
+    fa = FA(((2, 1), (1, 2)), {2})
     assert not fa.validate("aab")
     assert fa.validate("aaab")
     assert not fa.validate("aaaab")
