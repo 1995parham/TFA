@@ -11,7 +11,7 @@ __author__ = 'Parham Alvani'
 
 class DAO:
     def __init__(self):
-        raise NotImplementedError
+        pass
 
     def build_fa(self, input_config):
         """
