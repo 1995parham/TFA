@@ -54,17 +54,6 @@ class FA:
         else:
             return False
 
-    def intersection(self, f):
-        """
-        intersect FA with this FA
-
-        :type f: FA
-        :param f: FA that you want to intersect with this FA
-        :return: FA construct from f and this FA intersection
-        """
-        if not isinstance(f, FA):
-            raise TypeError("f must be FA")
-
 
 def test():
     """
