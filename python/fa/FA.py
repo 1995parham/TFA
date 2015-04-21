@@ -73,11 +73,11 @@ def test():
     """
 
     print("Testing FA class")
-    fa = FA(((2, 1), (1, 2)), {2})
-    assert not fa.validate("aab")
-    assert fa.validate("aaab")
-    assert not fa.validate("aaaab")
-    assert fa.validate("aaaaab")
+    manual_fa = FA(((2, 1), (1, 2)), {2})
+    assert not manual_fa.validate("aab")
+    assert manual_fa.validate("aaab")
+    assert not manual_fa.validate("aaaab")
+    assert manual_fa.validate("aaaaab")
 
 
 if __name__ == "__main__":
