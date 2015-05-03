@@ -3,13 +3,15 @@
  * ========================================
  * [] File Name : fa.c
  *
- * [] Creation Date : 05-04-2015
- *
- * [] Last Modified : Thu 16 Apr 2015 10:26:25 PM IRDT
+ * [] Creation Date : 03-05-2015
  *
  * [] Created By : Parham Alvani (parham.alvani@gmail.com)
  * =======================================
 */
+/*
+ * Copyright (c) 2015 Parham Alvani.
+*/
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,20 +25,24 @@ struct fa *fa_new(FILE *input_file)
 	int state;
 
 	new = malloc(sizeof(struct fa));
+
 	fscanf(input_file, "%d", &(new->sigma));
 	fscanf(input_file, "%d", &(new->delta));
+
 	new->ttable = malloc(new->delta * sizeof(int *));
 	for (i = 0; i < new->delta; i++)
 		new->ttable[i] = malloc(new->sigma * sizeof(int));
 	for (i = 0; i < new->delta; i++)
 		for (j = 0; j < new->sigma; j++)
 			fscanf(input_file, "%d", &(new->ttable[i][j]));
+
 	new->is_final = calloc(new->delta, sizeof(int));
 	do {
 		fscanf(input_file, "%d", &state);
 		if (state)
 			new->is_final[state - 1] = 1;
 	} while (state);
+
 	return new;
 }
 
@@ -74,7 +80,6 @@ struct fa *fa_new_intersection(const struct fa *f1, const struct fa *f2)
 
 	struct fa *new;
 	int i, j, k;
-	int state;
 
 	new = malloc(sizeof(struct fa));
 	new->sigma = f1->sigma;

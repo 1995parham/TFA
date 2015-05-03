@@ -3,13 +3,15 @@
  * ========================================
  * [] File Name : fa.h
  *
- * [] Creation Date : 05-04-2015
- *
- * [] Last Modified : Sun 05 Apr 2015 08:27:43 AM IRDT
+ * [] Creation Date : 03-05-2015
  *
  * [] Created By : Parham Alvani (parham.alvani@gmail.com)
  * =======================================
 */
+/*
+ * Copyright (c) 2015 Parham Alvani.
+*/
+
 #ifndef FA_H
 #define FA_H
 
