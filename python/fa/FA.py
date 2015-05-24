@@ -17,10 +17,8 @@ class FA:
     them after building them.
     """
 
-    def __init__(self, transition_table, final_states):
+    def __init__(self, transition_table: tuple, final_states: set):
         """
-        :type transition_table: tuple
-        :type final_states: set
         :param transition_table: FA transition table
         :param final_states: FA final states
         :return: nothing
