@@ -18,6 +18,6 @@
 
 int main(int argc, char *argv[])
 {
-	struct sf_dfa *f = string_file_dfa_new(stdin, "aaaaba");
+	struct sf_dfa *f = string_file_dfa_new(stdin, "aa");
 	string_file_dfa_process(f);
 }
