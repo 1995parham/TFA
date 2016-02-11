@@ -7,7 +7,7 @@
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
 add_executable(TFA.out main.c
-	fa.c fa.h
+	string_file_dfa.c string_file_dfa.h
 	dfa.c dfa.h state.h state.c)
 
 # Add personal c flags
