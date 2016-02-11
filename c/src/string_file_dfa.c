@@ -122,6 +122,13 @@ const struct state *dfa_transition(const struct dfa *d)
 			string_file_dfa_data_delete(v);
 			return s;
 		}
+	} else {
+		printf("Not Accepted\n");
+		s->data = NULL;
+		s->is_final = 1;
+		string_file_dfa_data_delete(v);
+		return s;
+
 	}
 	s->is_final = 0;
 	return s;
