@@ -20,6 +20,7 @@ struct state *state_new(void *data)
 	struct state *new = malloc(sizeof(struct state));
 
 	new->data = data;
+	new->is_final = 0;
 
 	return new;
 }
