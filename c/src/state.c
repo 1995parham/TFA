@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 
-struct state *state_new(const void *data)
+struct state *state_new(void *data)
 {
 	struct state *new = malloc(sizeof(struct state));
 

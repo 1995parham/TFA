@@ -16,11 +16,11 @@
 #define STATE_H
 
 struct state {
-	const void *data;
+	void *data;
 	int is_final;
 };
 
-struct state *state_new(const void *data);
+struct state *state_new(void *data);
 
 void state_delete(struct state *s);
 
