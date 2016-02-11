@@ -22,6 +22,6 @@ struct state {
 
 struct state *state_new(void *data);
 
-void state_delete(struct state *s);
+void state_delete(const struct state *s);
 
 #endif

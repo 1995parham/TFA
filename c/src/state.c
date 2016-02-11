@@ -24,7 +24,7 @@ struct state *state_new(void *data)
 	return new;
 }
 
-void state_delete(struct state *s)
+void state_delete(const struct state *s)
 {
-	free(s);
+	free((void *)s);
 }
