@@ -8,7 +8,7 @@
 # =======================================
 add_executable(TFA.out main.c
 	fa.c fa.h
-	dfa.c dfa.h)
+	dfa.c dfa.h state.h state.c)
 
 # Add personal c flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O0 -g -std=gnu11 ")
