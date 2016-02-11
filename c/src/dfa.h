@@ -11,11 +11,10 @@
 /*
  * Copyright (c) 2016 Parham Alvani.
 */
+#ifndef DFA_H
+#define DFA_H
 
-struct state {
-	const void *data;
-	int is_final;
-};
+#include "state.h"
 
 struct dfa {
 	const struct state *c;
@@ -46,3 +45,5 @@ void dfa_process(struct dfa *d);
  * call in dfa_process for state transition
 */
 const struct state *dfa_transition(const struct dfa *d);
+
+#endif
