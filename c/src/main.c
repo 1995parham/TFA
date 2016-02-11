@@ -14,10 +14,10 @@
 
 #include <stdio.h>
 
-#include "fa.h"
+#include "string_file_dfa.h"
 
 int main(int argc, char *argv[])
 {
-	struct fa *f = fa_new(stdin);
-	printf("%d\n", fa_validate(f, "aaaaba"));
+	struct sf_dfa *f = string_file_dfa_new(stdin, "aaaaba");
+	string_file_dfa_process(f);
 }
