@@ -46,4 +46,10 @@ void dfa_process(struct dfa *d);
 */
 const struct state *dfa_transition(const struct dfa *d);
 
+/*
+ * DFA implemented function
+ * delete your DFA :(
+*/
+void dfa_delete(const struct dfa *d);
+
 #endif

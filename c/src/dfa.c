@@ -29,3 +29,9 @@ void dfa_process(struct dfa *d)
 	while (!d->c->is_final)
 		d->c = dfa_transition(d);
 }
+
+void dfa_delete(const struct dfa *d)
+{
+	state_delete(d->c);
+	free((void *)d);
+}
