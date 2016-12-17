@@ -7,8 +7,3 @@
 # [] Created By : Parham Alvani (parham.alvani@gmail.com)
 # =======================================
 __author__ = 'Parham Alvani'
-
-from fa import FA
-from fa import DAO
-from fa import FileDAO
-
