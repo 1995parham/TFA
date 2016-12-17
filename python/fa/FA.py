@@ -17,19 +17,34 @@ class FA:
     them after building them.
     """
 
-    def __init__(self, transition_table: tuple, final_states: set):
+    def __init__(self, transition_table: list, final_states: set):
         """
         :param transition_table: FA transition table
+        -------------
+        |   | 1 | 2 |
+        | 1 | b | a |
+        | 2 | a | b |
+        -------------
+        [((b), (a)), ((a), (b))]
         :param final_states: FA final states
         :return: nothing
         """
 
-        if not isinstance(transition_table, tuple):
-            raise TypeError("transition_table must be tuple")
+        if not isinstance(transition_table, list):
+            raise TypeError("transition_table must be list")
         if not isinstance(final_states, set):
             raise TypeError("final_states must be set")
-        self.transition_table = transition_table
+        self.transition_table = []
+        for state in transition_table:
+            next_states = {}
+            next_state = 0
+            for transition in state:
+                for alphabet in transition:
+                    next_states[alphabet] = next_state
+                next_state += 1
+            self.transition_table.append(next_states)
         self.final_states = final_states
+        print(self)
 
     def validate(self, w):
         """
@@ -42,30 +57,24 @@ class FA:
         if not isinstance(w, str):
             raise TypeError("w must be string")
         w.lower()
-        current_state = 1
-        w_index = 0
-        while w_index < len(w):
-            current_state = self.transition_table[current_state - 1][ord(w[w_index]) - ord('a')]
-            w_index += 1
+        current_state = 0
+        for c in w:
+            try:
+                current_state = self.transition_table[current_state][c]
+            except KeyError:
+                return False
         if current_state in self.final_states:
             return True
         else:
             return False
 
-
-def test():
-    """
-    Test function
-    :return: nothing
-    """
-
-    print("Testing FA class")
-    manual_fa = FA(((2, 1), (1, 2)), {2})
-    assert not manual_fa.validate("aab")
-    assert manual_fa.validate("aaab")
-    assert not manual_fa.validate("aaaab")
-    assert manual_fa.validate("aaaaab")
-
-
-if __name__ == "__main__":
-    test()
+    def __str__(self):
+        r = ''
+        i = 0
+        for state in self.transition_table:
+            s = 'state %d:\n' % i
+            for alphabet, next_state in state.items():
+                s += '\t %d -[%1s]-> %d\n' % (i, alphabet, next_state)
+            i += 1
+            r += s
+        return r
